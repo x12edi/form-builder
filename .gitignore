@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/form-builder/.vs/form-builder
+/form-builder/bin/Debug/net9.0
+/form-builder/obj/Debug/net9.0
+/form-builder/obj

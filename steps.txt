@@ -1,0 +1,6 @@
+dotnet new mvc -n form-builder
+cd form-builder
+
+dotnet add package Microsoft.Data.Sqlite
+
+

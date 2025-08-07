@@ -1,0 +1,25 @@
+﻿@model List<form_builder.Models.FormModel>
+
+<h2>Available Forms</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var form in Model)
+        {
+            <tr>
+                <td>@form.Name</td>
+                <td>@form.CreatedAt</td>
+                @* <td><a href="Form/{@form.Id}">view</a></td> *@
+                @* <td><a href="@($"Form/{form.Id}")">view</a></td> *@
+                <td><a href="@Url.Action("Render", "Form", new { id = form.Id })">view</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
