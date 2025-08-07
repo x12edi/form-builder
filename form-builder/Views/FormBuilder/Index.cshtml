@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Form Builder";
+}
+
+<h2>Visual Form Builder</h2>
+
+<div class="mb-3">
+    <label>Form Name:</label>
+    <input type="text" id="formName" class="form-control" placeholder="Enter form name" />
+</div>
+
+<div id="fieldList" class="mb-3"></div>
+
+<button class="btn btn-success mb-3" id="addFieldBtn">Add Field</button>
+
+<button class="btn btn-primary" id="saveFormBtn">Save Form</button>
+
+<!-- Preview -->
+<h4>Preview JSON</h4>
+<pre id="metadataPreview" class="bg-light p-3 border rounded" style="max-height: 300px; overflow-y: auto;"></pre>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/form-builder.js"></script>
+}

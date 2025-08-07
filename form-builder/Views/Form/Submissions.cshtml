@@ -1,0 +1,43 @@
+﻿@model List<form_builder.Models.FormSubmission>
+@{
+    ViewData["Title"] = $"Submissions - {ViewBag.FormName}";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!Model.Any())
+{
+    <p>No submissions found.</p>
+}
+else
+{
+    <div class="mb-3">
+        <a class="btn btn-sm btn-outline-secondary" href="/Form/ExportCsv/@ViewBag.FormId">Export</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Submitted At</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var submission in Model)
+            {
+                var data = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(submission.SubmissionData);
+                <tr>
+                    <td>@submission.SubmittedAt.ToString("g")</td>
+                    <td>
+                        <ul>
+                            @foreach (var kv in data)
+                            {
+                                <li><strong>@kv.Key:</strong> @kv.Value</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

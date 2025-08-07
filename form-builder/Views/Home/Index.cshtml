@@ -18,7 +18,8 @@
                 <td>@form.CreatedAt</td>
                 @* <td><a href="Form/{@form.Id}">view</a></td> *@
                 @* <td><a href="@($"Form/{form.Id}")">view</a></td> *@
-                <td><a href="@Url.Action("Render", "Form", new { id = form.Id })">view</a></td>
+                <td><a href="@Url.Action("Render", "Form", new { id = form.Id })">view form</a></td>
+                <td><a href="@Url.Action("Submissions", "Form", new { id = form.Id })">view submission</a></td>
             </tr>
         }
     </tbody>
