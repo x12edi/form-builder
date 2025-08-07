@@ -20,6 +20,7 @@
                 @* <td><a href="@($"Form/{form.Id}")">view</a></td> *@
                 <td><a href="@Url.Action("Render", "Form", new { id = form.Id })">view form</a></td>
                 <td><a href="@Url.Action("Submissions", "Form", new { id = form.Id })">view submission</a></td>
+                <td><a href="@Url.Action("Edit", "FormBuilder", new { id = form.Id })">edit</a></td>
             </tr>
         }
     </tbody>

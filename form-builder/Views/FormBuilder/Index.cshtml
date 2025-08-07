@@ -1,5 +1,19 @@
-﻿@{
+﻿@using System.Text.Json
+@{
     ViewData["Title"] = "Form Builder";
+    var options = new JsonSerializerOptions
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    };
+    // ViewBag.InitialMetadata = new
+    // {
+    //     formName = "Contact Form",
+    //     fields = new List<object> {
+    //     new { type = "text", label = "Name", name = "name" }
+    // }
+    // };
+    var metadataObj = ViewBag.InitialMetadata ?? new { formName = "", fields = new List<object>() };
+    int formId = Convert.ToInt32(ViewBag.FormId ?? 0);
 }
 
 <h2>Visual Form Builder</h2>
@@ -12,14 +26,19 @@
 <div id="fieldList" class="mb-3"></div>
 
 <button class="btn btn-success mb-3" id="addFieldBtn">Add Field</button>
-
 <button class="btn btn-primary" id="saveFormBtn">Save Form</button>
 
-<!-- Preview -->
 <h4>Preview JSON</h4>
 <pre id="metadataPreview" class="bg-light p-3 border rounded" style="max-height: 300px; overflow-y: auto;"></pre>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/form-builder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+    <script>
+        const initialMetadata = @Html.Raw(JsonSerializer.Serialize(metadataObj, options));
+        const editingFormId = @formId;
+    </script>
+
+    <script src="~/js/form-builder.js" asp-append-version="true"></script>
 }
